@@ -1,0 +1,42 @@
+.profile-info {
+  height: 300px;
+  box-shadow:
+   -20px 20px 0 -17px #fff,
+   20px -20px 0 -17px #fff,
+   20px 20px 0 -20px #c27153,
+   0 0 0 2px #c27153;
+
+  &__avatar {
+    float: left;
+    margin-right: 20px;
+    border-radius: 4px;
+  }
+
+  &__data {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__edit {
+    width: 150px;
+    align-self: center;
+    border-radius: 20px;
+  }
+
+  &__edit:hover {
+    transition: all 0.5s;
+    background-color: rgb(219, 217, 217);
+  }
+}
+.profile-data {
+
+  &__full-name {
+    font-size: 40px;
+  }
+  &__date-of-birth,
+  &__city {
+    font-size: 25px;
+  }
+}

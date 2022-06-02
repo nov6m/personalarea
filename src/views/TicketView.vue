@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    main
-  </div>
+  ticket
 </template>
 
 <script>

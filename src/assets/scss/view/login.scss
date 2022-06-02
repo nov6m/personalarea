@@ -1,0 +1,12 @@
+.form {
+  width: 100vw;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
