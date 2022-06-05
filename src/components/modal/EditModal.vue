@@ -25,6 +25,8 @@
 <script>
 import customFieldset from '@/components/ui-kits/customFieldset.vue'
 import cityList from '@/constants/cityList'
+// import { computed } from '@vue/runtime-core'
+// import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -47,6 +49,8 @@ export default {
       }
     ]
     // const store = useStore()
+    // const userInfo = computed(() => store.getters.getUser)
+
     const editUser = {
       name: '',
       surname: '',

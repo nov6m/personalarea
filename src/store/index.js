@@ -22,7 +22,7 @@ export default createStore({
     }
   },
   mutations: {
-    SIGHIN: (state) => {
+    SIGHINOUT: (state) => {
       state.hasLogin = !state.hasLogin
     }
   },

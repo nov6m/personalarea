@@ -1,10 +1,13 @@
 .header {
-  
+  display: flex;
+  justify-content: space-around;
+
+
   &__menu {
     display: flex;
     justify-content: center;
-
   }
+
 }
 
 .menu {

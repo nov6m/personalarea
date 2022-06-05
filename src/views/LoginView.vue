@@ -34,7 +34,7 @@ export default {
     const store = useStore()
 
     const sighIn = function () {
-      store.commit('SIGHIN')
+      store.commit('SIGHINOUT')
       router.push({ path: '/profile' })
     }
     return {
