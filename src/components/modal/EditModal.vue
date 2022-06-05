@@ -1,21 +1,22 @@
 <template>
  <div class="modalWrapper">
    <div class="modal">
-      <form action="" class="modal__form">
-        <custom-fieldset v-for="({name: name, type: type}, index) in modalFields"
-        :key="index"
-        :name="name"
-        :type="type">
-        </custom-fieldset>
+      <form action="" class="modal__form" @submit="acceptHandler">
+        <div v-for="({name: name, type: type}, index) in modalFields" :key="index">
+          <fieldset>
+            <legend>{{name}}</legend>
+            <input required :type="type" v-model.trim="modalFields[index].value">
+          </fieldset>
+        </div>
         <div class="fieldset-city">
           <fieldset>
             <legend>Город</legend>
-            <select>
-              <option v-for="({id: id, cityName: cityName}) in cityList" :key="id" :value="id">{{cityName}}</option>
+            <select v-model="userCityEdit.value">
+              <option v-for="({id: id, cityName: cityName}) in cityList" :key="id" :value="cityName">{{cityName}}</option>
             </select>
           </fieldset>
         </div>
-        <button class="modal__accept" @click="acceptHandler">Принять изменения</button>
+        <button class="modal__accept">Принять изменения</button>
         <button class="modal__cancel" @click="cancelHandler">Отменить изменения</button>
       </form>
    </div>
@@ -23,43 +24,44 @@
 </template>
 
 <script>
-import customFieldset from '@/components/ui-kits/customFieldset.vue'
 import cityList from '@/constants/cityList'
-// import { computed } from '@vue/runtime-core'
-// import { useStore } from 'vuex'
+import { useStore } from 'vuex'
+import { reactive } from '@vue/reactivity'
 
 export default {
-  components: {
-    customFieldset
-  },
   emits: ['close'],
   setup (_, { emit }) {
-    const modalFields = [
+    const modalFields = reactive([
       {
         name: 'Имя',
-        type: 'text'
+        type: 'text',
+        value: ''
       },
       {
         name: 'Фамилия',
-        type: 'text'
+        type: 'text',
+        value: ''
       },
       {
         name: 'Дата рождения',
-        type: 'date'
+        type: 'date',
+        value: ''
       }
-    ]
-    // const store = useStore()
-    // const userInfo = computed(() => store.getters.getUser)
-
-    const editUser = {
-      name: '',
-      surname: '',
-      dateOfBirth: '',
-      city: ''
+    ])
+    const userCityEdit = {
+      value: ''
     }
+    const store = useStore()
 
     const acceptHandler = function () {
-
+      const editUser = {
+        name: modalFields[0].value,
+        surname: modalFields[1].value,
+        dateOfBirth: modalFields[2].value,
+        city: userCityEdit.value
+      }
+      store.commit('EDITUSER', editUser)
+      emit('close')
     }
     const cancelHandler = function () {
       emit('close')
@@ -68,7 +70,7 @@ export default {
     return {
       modalFields,
       cityList,
-      editUser,
+      userCityEdit,
       acceptHandler,
       cancelHandler
     }

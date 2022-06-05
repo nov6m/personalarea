@@ -1,0 +1,12 @@
+.ticket {
+
+  &__description {
+    text-align: center;
+    font-size: 30px;
+  }
+  &__add {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+  }
+}

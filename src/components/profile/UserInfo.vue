@@ -9,7 +9,7 @@
         <div class="profile-data__date-of-birth">
           Дата рождения: {{userInfo.dateOfBirth}}
         </div>
-        <div class="profile-data__city">
+        <div class="profile-data__city" v-if="userInfo.city">
           Город: {{userInfo.city}}
         </div>
       </div>
